@@ -1,0 +1,1163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>АЙВА // Низовцева Анастасия и Полякова Мария</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
+    <style>
+        /* анимация */
+        @keyframes bounce {
+            0%, 20%, 60%, 100% {
+                transform: translateY(0);
+                transform: translateY(0);
+            }
+            
+            40% {
+                transform: translateY(-10px);
+                transform: translateY(-10px);
+            }
+            
+            80% {
+                transform: translateY(-5px);
+                transform: translateY(-5px);
+            }
+        }
+        /* хз что это*/
+        #buttonToTop {
+            display: none;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            cursor: pointer;
+            font-size: 150%;
+        }
+        /* для красивой заливки всего фона бежевым цветом*/ 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: RGB(243,235,232);
+        }
+        /* хз что это*/ 
+        * {
+            box-sizing: border-box;
+        }
+        /* Стиль заголовка*/ 
+        h1 {
+            text-align: center;
+            color: RGB(47,69,56);
+            font-size: 50px;
+            padding: 45px;
+        }
+        /* Заголовки разделов*/ 
+        h2 {
+            text-align: center;
+            color: RGB(47,69,56);
+            font-size: 30px;
+            padding: 45px;
+            
+        }
+        /* блок где будут блюда, чтото типа подложки*/ 
+        article {
+            background-color: white;
+            border-radius: 20px;
+            margin: 10px;
+        }
+        /* Объявления в конце*/ 
+        footer {
+            text-align: center;
+            color: RGB(47,69,56);
+            font-size: 16px;
+        }
+        /* Овалы с меню*/ 
+        .topnav {
+            margin-left: 50px;
+            margin-right: 30px;
+            overflow: hidden;
+            text-align: center;
+        }
+        /* блоки разделов (овалы)*/ 
+        .topnav a {
+            background-color: white;
+            font-size: 18px;
+            border-radius: 20px;
+            display: inline-block;
+            color: RGB(47,69,56);
+            text-align: center;
+            padding: 12px 20px;
+            text-decoration: none;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        /* Отображение овалов при нажатии*/ 
+        .topnav a:hover {
+            background-color: RGB(47,69,56);
+            color: white;  
+        }     
+        /* @media screen and (max-width: 480px) {
+        .topnav a {
+            background-color: dodgerblue;
+            color: white;
+            margin-bottom: 3px;
+            float: none;
+            width: 100%;
+        }*/ 
+        #rasstoianie {
+            margin: 50px;
+        }
+        /* пробуем расположить нормально блюда*/
+        *, *::after, *::before {
+            box-sizing: border-box;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+        }
+        h3 {
+            margin: 0;
+        }
+        /*Раздел(например, завтраки) */ 
+        .products__list {
+            display: grid;
+            grid-gap: 30px 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        /* Сама плашка с блюдом*/ 
+        .products__item {
+            display: grid;
+            /*border-radius: 10px;*/ 
+            /* box-shadow: 0 5px 15px #d3d3d3;*/ 
+            overflow: hidden;
+        }
+        /* Название позиции*/ 
+        .products__title {
+            text-align: center;
+            font-size: 20px;
+            color: RGB(47,69,56);
+        }
+        /* Фото блюда*/ 
+        .products img {
+            display: block;
+            width: 100%;
+             /* margin-top: auto;*/
+        }
+        /* Цена*/ 
+        .price {
+            margin: auto;
+            padding: 5px;
+            text-align: center;
+            color: RGB(47,69,56);
+            font-size: 20px;
+            
+        }
+        /* time to razdel*/ 
+        .whete_we_have_time {
+            margin: 10px;
+            padding: 20px;
+        }
+        /* само время*/ 
+        .time {
+            margin: 0px;
+            text-align: center;
+            color: RGB(47,69,56);
+            font-size: 20px;
+        }
+        /* хз*/ 
+        input[type="radio"] {
+            position: absolute;
+            left: -9999px;
+        }
+        /* хз*/
+        :root {
+            --black: #1a1a1a;
+            --white: #fff;
+            --green: RGB(47,69,56);
+        }
+        /* стиль фильтров*/ 
+        .filters {
+            /* это не сработает font-family: "Montserrat";*/  
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        /* хз*/
+        .filters * {
+            display: inline-block;
+        }
+        /* хз*/
+        .filters label {
+            /* это не сработает font-family: "Montserrat";*/
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: 2rem;
+            min-width: 50px;
+            line-height: normal;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        /* хз*/
+        .filters label:hover {
+            background: RGB(47,69,56);
+            color:  #fff;
+        }
+        /* чтобы кнопка фильтр активировалаь*/ 
+        [value="All"]:checked ~ .filters [for="All"],
+        [value="Vegetarian"]:checked ~ .filters [for="Vegetarian"],
+        [value="Vegan"]:checked ~ .filters [for="Vegan"],
+        [value="Freegluten"]:checked ~ .filters [for="Freegluten"]
+        {
+            background: var(--green);
+            color: var(--white);
+        }
+        
+        [value="All"]:checked ~ .products__list [data-category] {
+            display: block;
+        }
+        /* компонент фильтра который не работает. Должно быть: когда выбран переключатель Vegan найти все элементы которые НЕ содержат этот атрибут и СКРЫТЬ их*/ 
+        [value="Vegetarian"]:checked ~ * .products__item:not([data-category*="Vegetarian"]),
+        [value="Vegan"]:checked ~ * .products__item:not([data-category*="Vegan"]),
+        [value="Freegluten"]:checked ~ * .products__item:not([data-category*="Freegluten"])
+        {
+            display: none;
+        }
+        /* хз*/
+        .btn-up {
+            position: fixed;
+            background-color: RGB(47,69,56);
+            right: 20px;
+            bottom: 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.15s ease-in-out, transform 0.3s ease-in-out;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* хз*/
+        .btn-up_hide {
+            display: none;
+        }
+        /* хз*/
+        .btn-up_hiding {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        /* хз*/
+        .btn-up-icon {
+            width: 40px;
+            height: 40px;
+            fill: currentcolor;
+        }
+        /* хз*/
+        @media (hover: hover) and (pointer: fine) {
+          .btn-up:hover {
+            background-color: RGB(47,69,56);
+          }
+        }
+        /* ! в конце*/
+        /*нужно для кнопки*/
+        .container {
+            position: relative;
+        }
+        .button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: RGB(47,69,56);
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            top: 4%;
+            left: 85%;
+        }
+        .plus:hover {
+            color: RGB(47,69,56);
+            animation: bounce 1s;
+            /* по возможности надо сделать чтобы картинка(сердечко) менялась при наведении*/
+            background-color: RGB(243,235,232);
+        }
+    </style>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="arrow-up-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
+            </symbol>
+        </svg>
+        <div class="btn-up btn-up_hide">
+            <svg class="btn-up-icon" role="img" aria-label="Прокрутить страницу к началу">
+                <use xlink:href="#arrow-up-short"></use>
+            </svg>
+        </div>
+
+        <script>
+          const btnUp = {
+            el: document.querySelector('.btn-up'),
+            scrolling: false,
+            show() {
+              if (this.el.classList.contains('btn-up_hide') && !this.el.classList.contains('btn-up_hiding')) {
+                this.el.classList.remove('btn-up_hide');
+                this.el.classList.add('btn-up_hiding');
+                window.setTimeout(() => {
+                  this.el.classList.remove('btn-up_hiding');
+                }, 300);
+              }
+            },
+            hide() {
+              if (!this.el.classList.contains('btn-up_hide') && !this.el.classList.contains('btn-up_hiding')) {
+                this.el.classList.add('btn-up_hiding');
+                window.setTimeout(() => {
+                  this.el.classList.add('btn-up_hide');
+                  this.el.classList.remove('btn-up_hiding');
+                }, 300);
+              }
+            },
+            addEventListener() {
+              // при прокрутке окна (window)
+              window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                if (this.scrolling && scrollY > 0) {
+                  return;
+                }
+                this.scrolling = false;
+                // если пользователь прокрутил страницу более чем на 200px
+                if (scrollY > 400) {
+                  // сделаем кнопку .btn-up видимой
+                  this.show();
+                } else {
+                  // иначе скроем кнопку .btn-up
+                  this.hide();
+                }
+              });
+              // при нажатии на кнопку .btn-up
+              document.querySelector('.btn-up').onclick = () => {
+                this.scrolling = true;
+                this.hide();
+                // переместиться в верхнюю часть страницы
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth'
+                });
+              }
+            }
+          }
+        
+          btnUp.addEventListener();
+        </script>
+        <h1>АЙВА</h1>
+        
+        <!--  разделы -->
+        <div class="topnav">
+            <a href="#1">Завтраки</a>
+            <a href="#2">Закуски</a>
+            <a href="#3">Салаты</a>
+            <a href="#4">Горячее</a>
+            <a href="#5">Гарниры</a>
+            <a href="#6">Черный кофе</a>
+            <a href="#7">Кофе с молоком</a>
+            <a href="#8">Авторские</a>
+            <a href="#9">Раф-кофе</a>
+            <a href="#10">Матча</a>
+            <a href="#11">Чай</a>
+            <a href="#12">Молочные коктейли</a>
+            <a href="#13">Смузи</a>
+            <a href="#14">Фреши</a>
+            <a href="#15">Лимонады</a>
+            <a href="#16">Сезонное меню</a>
+            <!--<a href="#17">Вино</a>-->
+        </div>
+        <!--  добавила расстояние между блоками и веганской фигней -->
+        <p id=rasstoianie></p>
+        
+        <input type="radio" id="All" name="categories" value="All" checked>
+        <input type="radio" id="Vegetarian" name="categories" value="Vegetarian">
+        <input type="radio" id="Vegan" name="categories" value="Vegan">
+        <input type="radio" id="Freegluten" name="categories" value="Freegluten">
+        
+        <!--  Вегетрианские, веганские, без глютена -->
+        <ol class="filters">
+            <li>
+                <label for="All">все позиции</label>
+            </li>
+            <li>
+                <label for="Vegetarian">вегетарианские позиции</label>            
+            </li>
+            <li>
+                <label for="Vegan">веганские позиции</label>
+            </li>
+            <li>
+                <label for="Freegluten">без глютена</label>    
+            </li>
+        </ol>
+        
+        <!--  расстояние -->
+        <p id=rasstoianie></p>
+        
+        <!--  само меню -->
+        <article>
+            
+        <h2 id="1">Завтраки</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3032-6437-4834-b233-396233383763/-/format/webp/006.jpg" width="320px" height="320px" align="center">
+                    <button class="button plus" data-id="breakfast1">
+                        <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Овсянная каша с чиа и манго</p> 
+                    <p class="price">260 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3962-3163-4739-b432-653838326362/-/format/webp/008.jpg" width="320px" height="320px" align="center">
+                        <button class="button plus" data-id="breakfast2">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Рисовая каша с черносливом и орехами</p>
+                    <p class="price">290 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3532-3664-4130-b039-323766383663/-/format/webp/004.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Овсяная каша с ягодами и клетчаткой</p>
+                    <p class="price">230 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3834-6537-4333-a236-646464613637/-/format/webp/032.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Сырники с персиками и чиа сметаной</p>
+                    <p class="price">230 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3231-6566-4132-a265-376334396136/-/format/webp/010.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Сырники с варёной сгущёнкой и морской солью</p>
+                    <p class="price">230 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild6639-3630-4336-a365-653762376539/-/format/webp/016.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Вафли с солёной карамелью и греческим соусом</p>
+                    <p class="price">290 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                     <div class="container">
+                         <img src="https://thumb.tildacdn.com/tild3139-6565-4232-a162-343736326638/-/format/webp/026.jpg" width="320px" height="320px" align="center" >
+                         <button class="button plus">
+                             <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                         </button>
+                    </div>
+                    <p class="products__title">Яичница со свежим салатом</p>
+                    <p class="price">240 р.</p>
+                </li>
+
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3933-6164-4532-b136-623033653932/-/format/webp/014.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Омлет с лососем слабой соли и греческим йогуртом</p>
+                    <p class="price">240 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3537-3632-4135-b561-623933383464/-/format/webp/043.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Английский завтрак</p>
+                    <p class="price">390 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild6635-3664-4333-b538-396263343366/-/format/webp/035.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Гранд завтрак</p>
+                    <p class="price">420 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3966-6139-4236-a432-333137623466/-/format/webp/014.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Картофельные драники с лососем слабой соли и пряным сыром</p>
+                    <p class="price">360 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild3939-6665-4036-b366-393237396461/-/format/webp/041.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Омлет с сыром и ветчиной</p>
+                    <p class="price">290 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild6231-6532-4534-b639-316166376364/-/format/webp/003.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Вафля с креветкой и скремблом</p>
+                    <p class="price">320 р.</p>
+                </li>
+                <li class="products__item" data-category="Vegetarian">
+                    <div class="container"> 
+                        <img src="https://thumb.tildacdn.com/tild3939-3361-4461-a338-333738333634/-/format/webp/__.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                        <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Бриошь с творожным муссом и молочным маком </p>
+                    <p class="price">280 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://thumb.tildacdn.com/tild6261-6366-4534-a635-643864643563/-/format/webp/044.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Крок - мадам на бриоши с сыром сулугуни, беконом и яйцом</p>
+                    <p class="price">320 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://static3.tildacdn.com/tild6239-6166-4134-b539-663037346134/024.jpg" width="320px" height="320px" align="center" ><button class="button plus">
+                        <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Вафля Бенедикт с ветчиной</p>
+                    <p class="price">260 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://static3.tildacdn.com/tild6162-3537-4731-a362-623363613062/039.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Бриошь с мятым авокадо, лососем слабой соли и яйцом, под соусом голландез</p>
+                    <p class="price">340 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://static3.tildacdn.com/tild3861-6261-4136-b835-663837343230/030.jpg" width="320px" height="320px" align="center" ><button class="button plus">
+                        <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Тост с ветчиной и яйцом</p>
+                    <p class="price">260 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://static3.tildacdn.com/tild3638-6534-4137-b261-373466386362/022.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Вафля Бенедикт с лососем</p>
+                    <p class="price">360 р.</p>
+                </li>
+                <li class="products__item" data-category="Vegan">
+                    <div class="container">
+                        <img src="https://static3.tildacdn.com/tild6663-3030-4261-a634-653966316139/002.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Кокосовый пудинг с ягодами и манго</p>
+                    <p class="price">260 р.</p>
+                </li>
+                <li class="products__item">
+                    <div class="container">
+                        <img src="https://static3.tildacdn.com/tild3839-3666-4234-a263-343664326466/___.jpg" width="320px" height="320px" align="center" >
+                        <button class="button plus">
+                            <img src="https://assets.litcharts.com/poetry/components/000/002/207/full/open-uri20200429-4-1olmi9x?1588156553" >
+                        </button>
+                    </div>
+                    <p class="products__title">Кускус с овощами и сыром пармезан</p>
+                    <p class="price">280 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="2" class="whete_we_have_time">Закуски</h2>
+            
+            <p class="time">с 12:00 до 23:00</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://static3.tildacdn.com/tild3830-6330-4331-b439-643863393164/066.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Печёная морковь с сыром горгондзола и пеканом</p>
+                    <p class="price">340 р.</p>
+                </li>
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://static3.tildacdn.com/tild3438-6566-4465-b630-613264333539/012.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Печёные перцы с брынзой и зеленью</p>
+                    <p class="price">240 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://static3.tildacdn.com/tild6132-3831-4664-b339-363538656238/058.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Пате из куриной печени с гранатовой карамелью</p>
+                    <p class="price">380 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegan">
+                    <img src="https://static3.tildacdn.com/tild3432-3466-4263-a462-343938616361/010.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Хумус из белой фасоли</p>
+                    <p class="price">240 р.</p>
+                </li>
+
+                <li class="products__item">
+                    <img src="https://static3.tildacdn.com/tild3531-3463-4134-b462-656331623066/033.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Креветки в пряном масле</p>
+                    <p class="price">270 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="3" class="whete_we_have_time">Салаты</h2>
+            
+            <p class="time">с 12:00 до 23:00</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3931-3637-4439-b533-356436393032/-/format/webp/035.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Салат с лососем слабой соли и пряным сыром</p>
+                    <p class="price">420 р.</p>
+                </li>
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://thumb.tildacdn.com/tild6366-3765-4131-b437-356664373332/-/format/webp/071.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Салат из овощей с сыром фета</p>
+                    <p class="price">360 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3532-3664-4130-b039-323766383663/-/format/webp/004.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Овсяная каша с ягодами и клетчаткой</p>
+                    <p class="price">230 р.</p>
+                </li>
+
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3532-3038-4830-a130-333939393364/-/format/webp/028.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Зеленый салат с креветками и брокколи</p>
+                    <p class="price">340 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="4" class="whete_we_have_time">Горячее</h2>
+            
+            <p class="time">с 12:00 до 23:00</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3537-3661-4537-b134-383434663235/-/format/webp/001.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Жареный авокадо с рисом и севиче из лосося</p>
+                    <p class="price">340 р.</p>
+                </li>
+
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://thumb.tildacdn.com/tild6630-6533-4735-b062-626134393836/-/format/webp/030.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Печёный картофель с грибным чизом</p>
+                    <p class="price">290 р.</p>
+                </li>
+
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6530-3132-4634-a436-623039396333/-/format/webp/016.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Цыплёнок с печёной морковью и кускусом</p>
+                    <p class="price">420 р.</p>
+                </li>
+
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3031-6135-4438-b334-316632343933/-/format/webp/033.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Говядина томленая с соусом BBQ, картофельным пюре и брокколи</p>
+                    <p class="price">560 р.</p>
+                </li>
+
+                <li class="products__item">
+                     <img src="https://thumb.tildacdn.com/tild3730-3766-4466-a564-343939623963/-/format/webp/038.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Креветки с лапшой из хрустящих овощей и водорослей</p>
+                    <p class="price">390 р.</p>
+                </li>
+
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6361-6163-4262-b562-663236376238/-/format/webp/018.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Судак с картофельным пюре и трюфельным соусом</p>
+                    <p class="price">420 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3639-3361-4433-b762-393463636461/-/format/webp/036.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Паста с тунцом и пряными томатами</p>
+                    <p class="price">380 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3833-3531-4363-b538-306632393936/-/format/webp/020.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Паста с грибами и кабачком</p>
+                    <p class="price">380 р.</p>
+                </li>
+                
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6637-3366-4461-b139-626262626466/-/format/webp/037.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Паста конкилье с укропным песто, креветками и печёным перцем</p>
+                    <p class="price">380 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="5" class="whete_we_have_time">Гарниры</h2>
+            
+            <p class="time">с 12:00 до 23:00</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item" data-category="Vegetarian">
+                    <p class="products__title">Картофельное пюре</p>
+                    <p class="price">70 р.</p>
+                </li>
+                
+                <li class="products__item" data-category="Vegan">
+                    <p class="products__title">Кускус</p>
+                    <p class="price">90 р.</p>
+                </li>
+                    
+                <li class="products__item" data-category="Vegan">
+                    <p class="products__title">Жареные кабачки</p>
+                    <p class="price">80 р.</p>
+                </li>
+                    
+                <li class="products__item" data-category="Vegan">
+                    <p class="products__title">Печёная морковь</p>
+                    <p class="price">80 р.</p>
+                </li>
+
+                
+                </ul>
+            </div>
+             
+        <h2 id="6">Черный кофе</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3237-3736-4331-b738-633233663030/-/format/webp/019.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Эспрессо</p>
+                    <p class="price">140 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3237-3736-4331-b738-633233663030/-/format/webp/019.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Фильтр-кофе</p>
+                    <p class="price">150 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3237-3736-4331-b738-633233663030/-/format/webp/019.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Американо</p>
+                    <p class="price">150 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="7">Кофе с молоком</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3563-3638-4639-b561-353137353836/-/format/webp/022.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Капулино 0.2</p>
+                    <p class="price">160 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3563-3638-4639-b561-353137353836/-/format/webp/022.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Капучино 0.3</p>
+                    <p class="price">200 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3235-3566-4531-a237-633834643433/-/format/webp/_.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Флэт-уайт</p>
+                    <p class="price">180 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3565-3436-4562-a164-303638623030/-/format/webp/018.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Латте</p>
+                    <p class="price">220 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3538-3666-4861-b930-613733383965/-/format/webp/023.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Какао</p>
+                    <p class="price">180 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="8" class="whete_we_have_time">Авторские</h2>
+            
+            <p class="time">(sugar free / dairy free)</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6435-3237-4331-a236-363638613433/-/format/webp/018.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Латте лемонграсс</p>
+                    <p class="price">260 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3933-3238-4232-b430-613738346161/-/format/webp/018.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Латте соленая карамель</p>
+                    <p class="price">260 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3631-3334-4236-a664-646531306665/-/format/webp/024.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Церемониальный какао</p>
+                    <p class="price">260 р.</p>
+                </li>
+                    
+                
+                </ul>
+            </div>
+            
+        <h2 id="9">Раф-кофе</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6562-6233-4733-b763-343765396630/-/format/webp/020.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Ванильный</p>
+                    <p class="price">220 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3238-3138-4534-b966-663564356630/-/format/webp/021.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Цитрусовый</p>
+                    <p class="price">220 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6339-6434-4431-a366-393133383065/-/format/webp/020.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Розмариновый</p>
+                    <p class="price">220 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="10" class="whete_we_have_time">Матча</h2>
+            
+            <p class="time">(sugar free / dairy free)</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6531-3831-4330-b931-373961363836/-/format/webp/016.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Матча-латте</p>
+                    <p class="price">250 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3733-3533-4063-a264-613261656134/-/format/webp/017.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Матча клубника-апельсин</p>
+                    <p class="price">260 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3264-3765-4339-b235-386434663466/-/format/webp/016.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Матча соленая карамель</p>
+                    <p class="price">260 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="11">Чай</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6464-3630-4434-b861-616634333665/-/format/webp/026.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Тизаны</p>
+                    <p class="price">240 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6536-3736-4635-a136-396133343561/-/format/webp/025.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Селективный китайский чай</p>
+                    <p class="price">240 р.</p>
+                </li>
+                <li class="products__item">
+                    
+                    <p class="products__title"></p>
+                    <p class="price"></p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="12">Молочные коктейли</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3032-3533-4664-b261-356264396238/-/format/webp/011.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Классический</p>
+                    <p class="price">190 р.</p>
+                </li>
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://thumb.tildacdn.com/tild3032-3533-4664-b261-356264396238/-/format/webp/011.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Классический на овсяном молоке</p>
+                    <p class="price">230 р.</p>
+                </li>
+                    
+                <li class="products__item" data-category="Vegetarian">
+                    <img src="https://thumb.tildacdn.com/tild3032-3533-4664-b261-356264396238/-/format/webp/011.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Банановый</p>
+                    <p class="price">230 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3032-3533-4664-b261-356264396238/-/format/webp/011.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Банановый на овсяном молоке</p>
+                    <p class="price">260 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="13">Смузи</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6135-6363-4630-b139-656661383362/-/format/webp/010.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Ягодный</p>
+                    <p class="price">260 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6135-6363-4630-b139-656661383362/-/format/webp/010.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Клубника-базилик</p>
+                    <p class="price">260 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3834-3135-4532-b261-643931373962/-/format/webp/009.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Груша-шпинат</p>
+                    <p class="price">280 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="14">Фреши</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <p class="products__title">Апельсиновый</p>
+                    <p class="price">240 р.</p>
+                </li>
+                <li class="products__item">
+                    <p class="products__title">Грейпфрутовый</p>
+                    <p class="price">240 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <p class="products__title">Яблоко-сельдерей</p>
+                    <p class="price">280 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <p class="products__title">Яблоко-морковь</p>
+                    <p class="price">280 р.</p>
+                </li>
+                </ul>
+            </div>
+            
+        <h2 id="15">Лимонады</h2>
+            
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6165-3562-4065-b339-626633636433/-/format/webp/008.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Игристый</p>
+                    <p class="price">210 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6161-3765-4137-a164-373462393239/-/format/webp/007.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Экспрессо-тоник</p>
+                    <p class="price">210 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3566-3331-4035-a539-323836303162/-/format/webp/004.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Гибискус-эстрагон</p>
+                    <p class="price">210 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3335-3339-4230-a266-373136376433/-/format/webp/005.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Фентхель</p>
+                    <p class="price">210 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6138-3935-4463-b535-323661633535/-/format/webp/013.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Морсклюква</p>
+                    <p class="price">100 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3935-6663-4535-b038-346537613537/-/format/webp/012.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Морс-облепиховый</p>
+                    <p class="price">120 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3536-3262-4663-b233-373330346665/-/format/webp/014.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Гречишный айс ти</p>
+                    <p class="price">160 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3965-3132-4262-a539-313265306339/-/format/webp/015.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Колд брю</p>
+                    <p class="price">170 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3538-3730-4261-a264-373264646132/-/format/webp/015.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Ягодный колд брю</p>
+                    <p class="price">210 р.</p>
+                </li>
+                
+                </ul>
+            </div>
+            
+        <h2 id="16" class="whete_we_have_time">Сезонное меню</h2>
+            
+            <p class="time">с 12:00 до 23:00</p>
+            <div class="products">
+                <ul class="products__list">
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3964-3235-4235-a431-353338343331/-/format/webp/034.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Баскская запеканка с муссом из варёной сгущёнки и белым шоколадом</p>
+                    <p class="price">270 р.</p>
+                </li>
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6261-3863-4062-b265-626532646231/-/format/webp/045.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Баклажан пармеджано</p>
+                    <p class="price">270 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild3962-6531-4230-b732-336666636437/-/format/webp/042.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Пад тай с тофу и арахисом</p>
+                    <p class="price">320 р.</p>
+                </li>
+                    
+                <li class="products__item">
+                    <img src="https://thumb.tildacdn.com/tild6434-6435-4461-b030-653836373831/-/format/webp/031.jpg" width="320px" height="320px" align="center" >
+                    <p class="products__title">Зелёный салат с тофу, персиком и соусом манго-чили</p>
+                    <p class="price">280 р.</p>
+                </li>
+                </ul>
+            </div>
+        
+        </article>
+        <!--  корзина -->
+        <script>
+            //артикулы блюд
+            let cart = {
+                'breakfast1': 2,
+                'breakfast2': 2,
+            };
+            
+            //реакция на нажатие
+            document.onclick = event => {
+                if (Event.target.classList.contains('button plus')){
+                    //console.log(event.target.dataset.id);
+                    plusFunction(Event.target.dataset.id);
+                    
+                }
+            }
+            //увеличение количества позиций
+            const plusFunction = id => {
+                cart[id]++;
+                renderCart();
+            }
+            //рисуем корзину
+            const renderCart = () => {
+                console.log(cart);
+            }
+            
+            renderCart();
+        </script>
+        
+        <!--  раздел в конце -->
+        <footer>
+            <p>---------------------------</p>
+            <span class="material-symbols-outlined">
+                priority_high
+            </span>
+            <p>Если у вас есть аллергия на пищевые продукты, пожалуйста, сообщите</p>
+            <p>нам об этом заранее. Не все ингредиенты в составе и украшении блюд</p>
+            <p>указаны в меню</p>
+            <p>---------------------------</p>
+            <span class="material-symbols-outlined">
+                eco
+            </span>
+            <p>Мы дарим скидку 10% на все напитки в собственных кружках и</p>
+            <p>термосах, потому что мы поддерживаем ваше стремление влиять на</p>
+            <p>экологию маленькими шагами</p>
+            <p>---------------------------</p>
+            <span class="material-symbols-outlined">
+                bakery_dining
+            </span>
+            <p>В нашем кафе мы используем хлеб только на закваске от небольшой</p>
+            <p>семейной пекарни «Любовь и хлеб»</p>
+            <p>---------------------------</p>
+        </footer>
+    </body>
+</html>
